@@ -72,6 +72,36 @@ public:
         }
         return node;
     }
+    
+    // Extra problem
+    // Deleting the kth node from the last node
+    Node<T>* removeNthFromEnd(Node<T>* head, int n){
+        auto slow = new Node<T>;
+        auto fast = new Node<T>;
+        auto previous = new Node<T>;
+        slow = head;
+        fast = head;
+        previous->next = head;
+        
+        for (int i = 0; i < n; i++){
+            if (!fast){
+                return NULL;
+            }
+            fast = fast->next;
+        }
+        
+        while (fast){
+            fast = fast->next;
+            slow = slow->next;
+            previous = previous->next;
+        }
+        
+        previous->next = previous->next->next;
+        if (head == slow){
+            head = previous->next;
+        }
+        return head;
+    }
 };
 
 int main(){
