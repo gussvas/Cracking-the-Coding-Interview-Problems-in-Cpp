@@ -38,34 +38,20 @@ template <typename T>
 class Solution{
 public:
     
-    void removeDups(Node<T> *head){
+    Node<T>* removeDups(Node<T> *head){
         auto node = new Node<T>;
         node = head;
         unordered_set<T> set;
         
         while (node->next){
-            // if we find a duplicate element
-            if (set.find(node->next->data) != set.end()){
-                if (node -> next -> next){
-                    auto temp = new Node<T>;
-                    temp = node->next;
-                    node->next = temp->next;
-                    delete temp;
-                }
-                else{
-                    //if the duplicate element is the last element
-                    // of the list we just set the next null of the node
-                    // before the last to NULL
-                    node->next = NULL;
-                    return;
-                }
-            }
-            else{
-                //We insert the value to the set
-                set.insert(node->data);
+            set.insert(node->data);
+            if (set.count(node->next->data)){
+                node->next = node->next->next;
+                continue;
             }
             node = node->next;
         }
+        return head;
     }
 };
 
