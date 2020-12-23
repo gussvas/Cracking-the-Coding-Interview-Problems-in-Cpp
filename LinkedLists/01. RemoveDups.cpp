@@ -59,17 +59,18 @@ int main(){
     List<int> list;
     Solution<int> solution;
     
-    list.addEnd(30);
-    list.addBeggining(20);
-    list.addBeggining(10);
-    list.addEnd(10);
-    list.addEnd(100);
+    list.addBeggining(3);
+    list.addBeggining(3);
+    list.addBeggining(2);
+    list.addBeggining(1);
+    list.addBeggining(1);
     
     //Print before we eliminate the duplicate
     list.print();
     cout << endl;
     
     solution.removeDups(list.head);
+    cout << endl;
     
     //Print after we eliminate the duplicate
     list.print();
